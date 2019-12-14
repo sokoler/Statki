@@ -101,7 +101,7 @@ public class Main {
                 counter++;
             }
         }
-        while (counter == ships.length-1);
+        while (counter == ships.length - 1);
     }
 
     private static void guess(int counterOfShots, int counterOfMisses, int counterOfHits) {
@@ -123,12 +123,15 @@ public class Main {
                 if (map.hasShip(row, col)) {
                     counterOfHits++;
                     map.markHit(row, col);
-                    System.out.println(" USER HIT AT " + row + "," + col);
+                    System.out.println(" YOU HIT AT " + row + "," + col);
+                } else if (map.isShotHere(row, col)) {
+                    System.out.println(" YOU ALREADY HIT HERE !");
                 } else {
                     counterOfMisses++;
                     map.markMiss(row, col);
-                    System.out.println(" USER MISS AT " + row + "," + col);
+                    System.out.println(" YOU MISSED AT " + row + "," + col);
                 }
+
 
             } else {
                 System.out.println("Invalid location!");
