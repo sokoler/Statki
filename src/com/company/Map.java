@@ -18,7 +18,7 @@ public class Map {
     }
 
     public boolean isShotHere(int row, int col) {
-        if (map[row][col].getStatus() == 1 || map[row][col].getStatus() == 2) {
+        if (map[row][col].getStatus().equals("X") || map[row][col].getStatus().equals("#")) {
             return true;
         }
         return false;
@@ -71,10 +71,26 @@ public class Map {
     public void setPointsToWin(Ship[] ships) {
         int sumOfShip = 0;
         for (Ship ship : ships) {
-            sumOfShip = ship.getLength();
+            sumOfShip += ship.getLength();
         }
         this.pointsToWin = sumOfShip;
     }
 
+    public void printMap(){
+
+        System.out.println(" ");
+        for(int i = 0; i < map.length; i++)
+            System.out.print("  " +i);
+        System.out.println();
+
+        for(int x = 0; x < map.length; x++) {
+            System.out.print(x);
+
+            for (int y = 0; y < map[x].length; y++){
+                System.out.print(map[x][y]);
+            }
+            System.out.println(x);
+        }
+    }
 
 }

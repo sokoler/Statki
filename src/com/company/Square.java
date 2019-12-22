@@ -2,17 +2,17 @@ package com.company;
 
 public class Square {
 
-    public static final int HIT = 1;
-    public static final int MISSED = 2;
+    private static final String HIT = "X";
+    private static final String MISSED = "#";
 
     private boolean ship;
-    private int status;
+    private String status;
     private int lengthOfShip;
     private int directionOfShip;
 
     public Square()
     {
-        status = 0;
+        status =" ";
         ship = false;
         lengthOfShip = -1;
         directionOfShip = -1;
@@ -36,11 +36,11 @@ public class Square {
         this.ship = ship;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -58,5 +58,11 @@ public class Square {
 
     public void setDirectionOfShip(int directionOfShip) {
         this.directionOfShip = directionOfShip;
+    }
+
+
+    @Override
+    public String toString() {
+        return "|"+ getStatus() +"|";
     }
 }

@@ -9,9 +9,9 @@ public class Main {
     private static int mapLength;
     private static Map map;
 
-    private static int counterOfShots;
-    private static int counterOfMisses;
-    private static int counterOfHits;
+    private static int counterOfShots = 0;
+    private static int counterOfMisses = 0;
+    private static int counterOfHits = 0;
 
     public static void main(String[] args) {
 
@@ -27,10 +27,10 @@ public class Main {
     }
 
     public static void checkUserAnswer() {
+
         while (true) {
 
-            System.out.println("\nUSER MAKE GUESS:");
-            guess(counterOfShots, counterOfMisses, counterOfHits);
+            guess();
 
             if (map.isWin()) {
                 System.out.println("YOU WON");
@@ -76,11 +76,12 @@ public class Main {
     private static void setupShips() {
 
         int counter = 0;
+        int normalCounter = 1;
         Random rand = new Random();
 
         do {
             for (Ship s : ships) {
-                System.out.println("\nShip " + counter + ": Length : " + s.getLength());
+                System.out.println("\nShip " + normalCounter + ": Length : " + s.getLength());
 
                 int length = ships[counter].getLength();
 
@@ -99,14 +100,15 @@ public class Main {
                 map.addShip(ships[counter]);
 
                 counter++;
+                normalCounter ++;
             }
         }
         while (counter == ships.length - 1);
     }
 
-    private static void guess(int counterOfShots, int counterOfMisses, int counterOfHits) {
+    private static void guess() {
 
-        while (true) {
+            map.printMap();
 
             int col = -1, row = -1;
 
@@ -119,25 +121,25 @@ public class Main {
             if ((col >= 0 && col < mapLength) && (row >= 0 && row < mapLength)) {
 
                 counterOfShots++;
-
-                if (map.hasShip(row, col)) {
-                    counterOfHits++;
-                    map.markHit(row, col);
-                    System.out.println(" YOU HIT AT " + row + "," + col);
-                } else if (map.isShotHere(row, col)) {
+                if(map.isShotHere(row, col)) {
                     System.out.println(" YOU ALREADY HIT HERE !");
+                }
+                else if (map.hasShip(row, col)) {
+                    {
+                        counterOfHits++;
+                        map.markHit(row, col);
+                        System.out.println(" YOU HIT AT " + col + "," + row);
+                    }
                 } else {
                     counterOfMisses++;
                     map.markMiss(row, col);
-                    System.out.println(" YOU MISSED AT " + row + "," + col);
+                    System.out.println(" YOU MISSED AT " + col + "," + row);
                 }
 
 
             } else {
                 System.out.println("Invalid location!");
-                break;
             }
-        }
     }
 
     private static boolean isShipWronglyPlaced(int row, int col, int dir, int length) {
@@ -182,6 +184,7 @@ public class Main {
 
         return false;
     }
+
 
 }
 
