@@ -76,17 +76,20 @@ public class Map {
         this.pointsToWin = sumOfShip;
     }
 
-    public void printMap(){
+    public void printMap() {
 
-        System.out.println(" ");
-        for(int i = 0; i < map.length; i++)
-            System.out.print("  " +i);
+        System.out.println();
+        for (int i = 0; i < map.length; i++)
+            System.out.print("  " + i);
         System.out.println();
 
-        for(int x = 0; x < map.length; x++) {
-            System.out.print(x);
+        for (int x = 0; x < map.length; x++) {
+            if (x <= 9)
+                System.out.print(" " + x);
+            else
+                System.out.print(x);
 
-            for (int y = 0; y < map[x].length; y++){
+            for (int y = 0; y < map[x].length; y++) {
                 System.out.print(map[x][y]);
             }
             System.out.println(x);

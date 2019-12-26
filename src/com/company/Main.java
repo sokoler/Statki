@@ -26,7 +26,7 @@ public class Main {
         checkUserAnswer();
     }
 
-    public static void checkUserAnswer() {
+    private static void checkUserAnswer() {
 
         while (true) {
 
@@ -42,7 +42,7 @@ public class Main {
         }
     }
 
-    public static void setEachShipLength() {
+    private static void setEachShipLength() {
         for (int i = 0; i < ships.length; i++) {
             Scanner scanner = new Scanner(System.in);
             int[] shipsLength = new int[ships.length];
@@ -56,7 +56,7 @@ public class Main {
         map.setPointsToWin(ships);
     }
 
-    public static void setShipsAmount() {
+    private static void setShipsAmount() {
         do {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter ships amount (between 1 to 10)");
@@ -64,7 +64,7 @@ public class Main {
         } while (ships.length < 1 || ships.length > 10);
     }
 
-    public static void setSizeOfMap() {
+    private static void setSizeOfMap() {
         do {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the size of the map (between 10 to 20)");
