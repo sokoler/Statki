@@ -47,15 +47,11 @@ public class Map {
         {
             for (int i = col; i < col + length; i++) {
                 map[row][i].setShip(true);
-                map[row][i].setLengthOfShip(length);
-                map[row][i].setDirectionOfShip(dir);
             }
         } else if (dir == 1) // Vertical
         {
             for (int i = row; i < row + length; i++) {
                 map[i][col].setShip(true);
-                map[i][col].setLengthOfShip(length);
-                map[i][col].setDirectionOfShip(dir);
             }
         }
     }
